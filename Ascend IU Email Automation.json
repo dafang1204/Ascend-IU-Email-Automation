@@ -6,17 +6,15 @@
         "operation": "search",
         "base": {
           "__rl": true,
-          "value": "appsIs8my21UIIkkZ",
+          "value": "YOUR_AIRTABLE_BASE_ID",
           "mode": "list",
-          "cachedResultName": "Ascend IU Event Outreach",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+          "cachedResultName": "Ascend IU Event Outreach"
         },
         "table": {
           "__rl": true,
-          "value": "tblODUz5fGsKA0DXq",
+          "value": "YOUR_AIRTABLE_TABLE_ID",
           "mode": "list",
-          "cachedResultName": "Alumni",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+          "cachedResultName": "Alumni"
         },
         "filterByFormula": "=AND({Status}=\"Approved\", NOT({Last Email Sent}))",
         "options": {}
@@ -27,11 +25,11 @@
         192,
         48
       ],
-      "id": "1804cd60-3047-4dc5-9482-69f6831aacca",
+      "id": "node-id-1",
       "name": "Get Approved Alumni Blast 1",
       "credentials": {
         "airtableTokenApi": {
-          "id": YOUR API KEY,
+          "id": "YOUR_AIRTABLE_CREDENTIAL_ID",
           "name": "Airtable Personal Access Token account"
         }
       }
@@ -51,12 +49,12 @@
         416,
         0
       ],
-      "id": "6ac3a516-68cf-4a71-b3d1-a7a9106c2e15",
+      "id": "node-id-2",
       "name": "Create Blast 1 Draft",
-      "webhookId": "e872ceac-4dbe-40a8-bc2d-6b647f4ef756",
+      "webhookId": "YOUR_WEBHOOK_ID_1",
       "credentials": {
         "gmailOAuth2": {
-          "id": "Gaxy9896kOialz5l",
+          "id": "YOUR_GMAIL_CREDENTIAL_ID",
           "name": "Gmail account"
         }
       }
@@ -66,17 +64,13 @@
         "operation": "update",
         "base": {
           "__rl": true,
-          "value": "appsIs8my21UIIkkZ",
-          "mode": "list",
-          "cachedResultName": "Ascend IU Event Outreach",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+          "value": "YOUR_AIRTABLE_BASE_ID",
+          "mode": "list"
         },
         "table": {
           "__rl": true,
-          "value": "tblODUz5fGsKA0DXq",
-          "mode": "list",
-          "cachedResultName": "Alumni",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+          "value": "YOUR_AIRTABLE_TABLE_ID",
+          "mode": "list"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -90,160 +84,7 @@
           },
           "matchingColumns": [
             "id"
-          ],
-          "schema": [
-            {
-              "id": "id",
-              "displayName": "id",
-              "required": false,
-              "defaultMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": false
-            },
-            {
-              "id": "Name",
-              "displayName": "Name",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Status",
-              "displayName": "Status",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Pending",
-                  "value": "Pending"
-                },
-                {
-                  "name": "Approved",
-                  "value": "Approved"
-                },
-                {
-                  "name": "Declined",
-                  "value": "Declined"
-                }
-              ],
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Email",
-              "displayName": "Email",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Stage",
-              "displayName": "Stage",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Invited",
-                  "value": "Invited"
-                },
-                {
-                  "name": "Confirmed",
-                  "value": "Confirmed"
-                },
-                {
-                  "name": "Declined",
-                  "value": "Declined"
-                },
-                {
-                  "name": "Reminded",
-                  "value": "Reminded"
-                },
-                {
-                  "name": "Update Sent",
-                  "value": "Update Sent"
-                },
-                {
-                  "name": "Thank You Sent",
-                  "value": "Thank You Sent"
-                }
-              ],
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Scheduled Date",
-              "displayName": "Scheduled Date",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Stage 2 Sent",
-              "displayName": "Stage 2 Sent",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Last Email Sent",
-              "displayName": "Last Email Sent",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Last Email Sent Date",
-              "displayName": "Last Email Sent Date",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "Draft Created",
-              "displayName": "Draft Created",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": false
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
+          ]
         },
         "options": {
           "typecast": true
@@ -255,11 +96,11 @@
         624,
         0
       ],
-      "id": "19ee00c5-ddce-4cb0-b1ef-1627bf93cb21",
+      "id": "node-id-3",
       "name": "Update Airtable After Blast 1 Draft",
       "credentials": {
         "airtableTokenApi": {
-          "id": YOUR API KEY ,
+          "id": "YOUR_AIRTABLE_CREDENTIAL_ID",
           "name": "Airtable Personal Access Token account"
         }
       }
@@ -292,7 +133,7 @@
         },
         "documentId": {
           "__rl": true,
-          "value": "1wGruERIEEmaN_BM-uxPGADATbKSnRU4LU_n3luH1YqA",
+          "value": "YOUR_GOOGLE_SHEET_ID",
           "mode": "id"
         },
         "sheetName": {
@@ -313,7 +154,7 @@
       "name": "Watch Form Responses",
       "credentials": {
         "googleSheetsTriggerOAuth2Api": {
-          "id": YOUR API KEY ,
+          "id": "YOUR_GOOGLE_SHEETS_CREDENTIAL_ID",
           "name": "Google Sheets Trigger account"
         }
       }
@@ -323,17 +164,13 @@
         "operation": "search",
         "base": {
           "__rl": true,
-          "value": "appsIs8my21UIIkkZ",
-          "mode": "list",
-          "cachedResultName": "Ascend IU Event Outreach",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+          "value": "YOUR_AIRTABLE_BASE_ID",
+          "mode": "list"
         },
         "table": {
           "__rl": true,
-          "value": "tblODUz5fGsKA0DXq",
-          "mode": "list",
-          "cachedResultName": "Alumni",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+          "value": "YOUR_AIRTABLE_TABLE_ID",
+          "mode": "list"
         },
         "filterByFormula": "={{ 'AND({Email}=\"' + $json['Email Address'] + '\", {Stage 2 Sent}=FALSE())' }}",
         "options": {}
@@ -348,7 +185,7 @@
       "name": "Check Stage 2 Not Sent",
       "credentials": {
         "airtableTokenApi": {
-          "id": YOUR API KEY ,
+          "id": "YOUR_AIRTABLE_CREDENTIAL_ID",
           "name": "Airtable Personal Access Token account"
         }
       }
@@ -404,10 +241,10 @@
       ],
       "id": "create-path-a-draft-p5",
       "name": "Create Path A Draft",
-      "webhookId": "825f4f62-e5fd-4fac-96ab-79c91278980a",
+      "webhookId": "YOUR_WEBHOOK_ID_2",
       "credentials": {
         "gmailOAuth2": {
-          "id": "Gaxy9896kOialz5l",
+          "id": "YOUR_GMAIL_CREDENTIAL_ID",
           "name": "Gmail account"
         }
       }
@@ -429,10 +266,10 @@
       ],
       "id": "create-path-b-draft-p5",
       "name": "Create Path B Draft",
-      "webhookId": "b6a20b53-c5c4-474b-b8ac-7f294bdcd59e",
+      "webhookId": "YOUR_WEBHOOK_ID_3",
       "credentials": {
         "gmailOAuth2": {
-          "id": "Gaxy9896kOialz5l",
+          "id": "YOUR_GMAIL_CREDENTIAL_ID",
           "name": "Gmail account"
         }
       }
@@ -442,17 +279,13 @@
         "operation": "update",
         "base": {
           "__rl": true,
-          "value": "appsIs8my21UIIkkZ",
-          "mode": "list",
-          "cachedResultName": "Ascend IU Event Outreach",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+          "value": "YOUR_AIRTABLE_BASE_ID",
+          "mode": "list"
         },
         "table": {
           "__rl": true,
-          "value": "tblODUz5fGsKA0DXq",
-          "mode": "list",
-          "cachedResultName": "Alumni",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+          "value": "YOUR_AIRTABLE_TABLE_ID",
+          "mode": "list"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -466,157 +299,6 @@
           },
           "matchingColumns": [
             "id"
-          ],
-          "schema": [
-            {
-              "id": "id",
-              "displayName": "id",
-              "required": false,
-              "defaultMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": false
-            },
-            {
-              "id": "Name",
-              "displayName": "Name",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Status",
-              "displayName": "Status",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Pending",
-                  "value": "Pending"
-                },
-                {
-                  "name": "Approved",
-                  "value": "Approved"
-                },
-                {
-                  "name": "Declined",
-                  "value": "Declined"
-                }
-              ],
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Email",
-              "displayName": "Email",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Stage",
-              "displayName": "Stage",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Invited",
-                  "value": "Invited"
-                },
-                {
-                  "name": "Confirmed",
-                  "value": "Confirmed"
-                },
-                {
-                  "name": "Declined",
-                  "value": "Declined"
-                },
-                {
-                  "name": "Reminded",
-                  "value": "Reminded"
-                },
-                {
-                  "name": "Update Sent",
-                  "value": "Update Sent"
-                },
-                {
-                  "name": "Thank You Sent",
-                  "value": "Thank You Sent"
-                }
-              ],
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Scheduled Date",
-              "displayName": "Scheduled Date",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Stage 2 Sent",
-              "displayName": "Stage 2 Sent",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Last Email Sent",
-              "displayName": "Last Email Sent",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Last Email Sent Date",
-              "displayName": "Last Email Sent Date",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "Draft Created",
-              "displayName": "Draft Created",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": false
-            }
           ]
         },
         "options": {
@@ -633,7 +315,7 @@
       "name": "Update Airtable After Path A",
       "credentials": {
         "airtableTokenApi": {
-          "id": YOUR API KEY ,
+          "id": "YOUR_AIRTABLE_CREDENTIAL_ID",
           "name": "Airtable Personal Access Token account"
         }
       }
@@ -643,17 +325,13 @@
         "operation": "update",
         "base": {
           "__rl": true,
-          "value": "appsIs8my21UIIkkZ",
-          "mode": "list",
-          "cachedResultName": "Ascend IU Event Outreach",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+          "value": "YOUR_AIRTABLE_BASE_ID",
+          "mode": "list"
         },
         "table": {
           "__rl": true,
-          "value": "tblODUz5fGsKA0DXq",
-          "mode": "list",
-          "cachedResultName": "Alumni",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+          "value": "YOUR_AIRTABLE_TABLE_ID",
+          "mode": "list"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -667,157 +345,6 @@
           },
           "matchingColumns": [
             "id"
-          ],
-          "schema": [
-            {
-              "id": "id",
-              "displayName": "id",
-              "required": false,
-              "defaultMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": false
-            },
-            {
-              "id": "Name",
-              "displayName": "Name",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Status",
-              "displayName": "Status",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Pending",
-                  "value": "Pending"
-                },
-                {
-                  "name": "Approved",
-                  "value": "Approved"
-                },
-                {
-                  "name": "Declined",
-                  "value": "Declined"
-                }
-              ],
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Email",
-              "displayName": "Email",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Stage",
-              "displayName": "Stage",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Invited",
-                  "value": "Invited"
-                },
-                {
-                  "name": "Confirmed",
-                  "value": "Confirmed"
-                },
-                {
-                  "name": "Declined",
-                  "value": "Declined"
-                },
-                {
-                  "name": "Reminded",
-                  "value": "Reminded"
-                },
-                {
-                  "name": "Update Sent",
-                  "value": "Update Sent"
-                },
-                {
-                  "name": "Thank You Sent",
-                  "value": "Thank You Sent"
-                }
-              ],
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Scheduled Date",
-              "displayName": "Scheduled Date",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Stage 2 Sent",
-              "displayName": "Stage 2 Sent",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Last Email Sent",
-              "displayName": "Last Email Sent",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Last Email Sent Date",
-              "displayName": "Last Email Sent Date",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "Draft Created",
-              "displayName": "Draft Created",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": false
-            }
           ]
         },
         "options": {
@@ -834,7 +361,7 @@
       "name": "Update Airtable After Path B",
       "credentials": {
         "airtableTokenApi": {
-          "id": YOUR API KEY ,
+          "id": "YOUR_AIRTABLE_CREDENTIAL_ID",
           "name": "Airtable Personal Access Token account"
         }
       }
@@ -863,17 +390,13 @@
         "operation": "search",
         "base": {
           "__rl": true,
-          "value": "appsIs8my21UIIkkZ",
-          "mode": "list",
-          "cachedResultName": "Ascend IU Event Outreach",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+          "value": "YOUR_AIRTABLE_BASE_ID",
+          "mode": "list"
         },
         "table": {
           "__rl": true,
-          "value": "tblODUz5fGsKA0DXq",
-          "mode": "list",
-          "cachedResultName": "Alumni",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+          "value": "YOUR_AIRTABLE_TABLE_ID",
+          "mode": "list"
         },
         "filterByFormula": "AND({Stage}=\"Invited\", {Stage 2 Sent}=FALSE(), DATETIME_DIFF(TODAY(), {Last Email Sent Date}, \"days\") >= 7)",
         "options": {}
@@ -888,7 +411,7 @@
       ],
       "credentials": {
         "airtableTokenApi": {
-          "id": YOUR API KEY ,
+          "id": "YOUR_AIRTABLE_CREDENTIAL_ID",
           "name": "Airtable Personal Access Token account"
         }
       }
@@ -910,10 +433,10 @@
         320,
         656
       ],
-      "webhookId": "24346a19-8d6c-4c28-9f64-ac195389f2d8",
+      "webhookId": "YOUR_WEBHOOK_ID_4",
       "credentials": {
         "gmailOAuth2": {
-          "id": "Gaxy9896kOialz5l",
+          "id": "YOUR_GMAIL_CREDENTIAL_ID",
           "name": "Gmail account"
         }
       }
@@ -923,17 +446,13 @@
         "operation": "update",
         "base": {
           "__rl": true,
-          "value": "appsIs8my21UIIkkZ",
-          "mode": "list",
-          "cachedResultName": "Ascend IU Event Outreach",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+          "value": "YOUR_AIRTABLE_BASE_ID",
+          "mode": "list"
         },
         "table": {
           "__rl": true,
-          "value": "tblODUz5fGsKA0DXq",
-          "mode": "list",
-          "cachedResultName": "Alumni",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+          "value": "YOUR_AIRTABLE_TABLE_ID",
+          "mode": "list"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -946,157 +465,6 @@
           },
           "matchingColumns": [
             "id"
-          ],
-          "schema": [
-            {
-              "id": "id",
-              "displayName": "id",
-              "required": false,
-              "defaultMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": false
-            },
-            {
-              "id": "Name",
-              "displayName": "Name",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Status",
-              "displayName": "Status",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Pending",
-                  "value": "Pending"
-                },
-                {
-                  "name": "Approved",
-                  "value": "Approved"
-                },
-                {
-                  "name": "Declined",
-                  "value": "Declined"
-                }
-              ],
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Email",
-              "displayName": "Email",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Stage",
-              "displayName": "Stage",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Invited",
-                  "value": "Invited"
-                },
-                {
-                  "name": "Confirmed",
-                  "value": "Confirmed"
-                },
-                {
-                  "name": "Declined",
-                  "value": "Declined"
-                },
-                {
-                  "name": "Reminded",
-                  "value": "Reminded"
-                },
-                {
-                  "name": "Update Sent",
-                  "value": "Update Sent"
-                },
-                {
-                  "name": "Thank You Sent",
-                  "value": "Thank You Sent"
-                }
-              ],
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Scheduled Date",
-              "displayName": "Scheduled Date",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Stage 2 Sent",
-              "displayName": "Stage 2 Sent",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Last Email Sent",
-              "displayName": "Last Email Sent",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Last Email Sent Date",
-              "displayName": "Last Email Sent Date",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "Draft Created",
-              "displayName": "Draft Created",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": false
-            }
           ]
         },
         "options": {
@@ -1113,71 +481,23 @@
       ],
       "credentials": {
         "airtableTokenApi": {
-          "id": YOUR API KEY, 
+          "id": "YOUR_AIRTABLE_CREDENTIAL_ID",
           "name": "Airtable Personal Access Token account"
         }
       }
     },
     {
       "parameters": {
-        "content": "Initial Invite Phase",
-        "height": 80,
-        "width": 160
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        -592,
-        64
-      ],
-      "id": "cb6ebf15-bbf4-4651-b95a-7212ccbe08a4",
-      "name": "Sticky Note"
-    },
-    {
-      "parameters": {
-        "content": "Yes & No Response Email",
-        "height": 80,
-        "width": 208
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        -640,
-        368
-      ],
-      "id": "f50bd4bb-1efd-475f-a270-ae1c624f10e3",
-      "name": "Sticky Note1"
-    },
-    {
-      "parameters": {
-        "content": "No Response Follow-Up Email",
-        "height": 80
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        -672,
-        672
-      ],
-      "id": "b2931c1d-bb09-48e7-a2f7-c37e9e60d357",
-      "name": "Sticky Note2"
-    },
-    {
-      "parameters": {
         "operation": "search",
         "base": {
           "__rl": true,
-          "value": "appsIs8my21UIIkkZ",
-          "mode": "list",
-          "cachedResultName": "Ascend IU Event Outreach",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+          "value": "YOUR_AIRTABLE_BASE_ID",
+          "mode": "list"
         },
         "table": {
           "__rl": true,
-          "value": "tblODUz5fGsKA0DXq",
-          "mode": "list",
-          "cachedResultName": "Alumni",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+          "value": "YOUR_AIRTABLE_TABLE_ID",
+          "mode": "list"
         },
         "filterByFormula": "AND({Status}=\"Approved\", {Stage}=\"Confirmed\", IS_SAME({Scheduled Date}, TODAY(), \"day\"), {Last Email Sent}=\"Path A Response\")",
         "options": {}
@@ -1192,7 +512,7 @@
       ],
       "credentials": {
         "airtableTokenApi": {
-          "id": YOUR API KEY ,
+          "id": "YOUR_AIRTABLE_CREDENTIAL_ID",
           "name": "Airtable Personal Access Token account"
         }
       }
@@ -1214,10 +534,10 @@
         416,
         928
       ],
-      "webhookId": "0bea3268-4c29-43cd-9d70-396f2d4c7df2",
+      "webhookId": "YOUR_WEBHOOK_ID_5",
       "credentials": {
         "gmailOAuth2": {
-          "id": "Gaxy9896kOialz5l",
+          "id": "YOUR_GMAIL_CREDENTIAL_ID",
           "name": "Gmail account"
         }
       }
@@ -1227,17 +547,13 @@
         "operation": "update",
         "base": {
           "__rl": true,
-          "value": "appsIs8my21UIIkkZ",
-          "mode": "list",
-          "cachedResultName": "Ascend IU Event Outreach",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+          "value": "YOUR_AIRTABLE_BASE_ID",
+          "mode": "list"
         },
         "table": {
           "__rl": true,
-          "value": "tblODUz5fGsKA0DXq",
-          "mode": "list",
-          "cachedResultName": "Alumni",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+          "value": "YOUR_AIRTABLE_TABLE_ID",
+          "mode": "list"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -1250,157 +566,6 @@
           },
           "matchingColumns": [
             "id"
-          ],
-          "schema": [
-            {
-              "id": "id",
-              "displayName": "id",
-              "required": false,
-              "defaultMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": false
-            },
-            {
-              "id": "Name",
-              "displayName": "Name",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Status",
-              "displayName": "Status",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Pending",
-                  "value": "Pending"
-                },
-                {
-                  "name": "Approved",
-                  "value": "Approved"
-                },
-                {
-                  "name": "Declined",
-                  "value": "Declined"
-                }
-              ],
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Email",
-              "displayName": "Email",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Stage",
-              "displayName": "Stage",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Invited",
-                  "value": "Invited"
-                },
-                {
-                  "name": "Confirmed",
-                  "value": "Confirmed"
-                },
-                {
-                  "name": "Declined",
-                  "value": "Declined"
-                },
-                {
-                  "name": "Reminded",
-                  "value": "Reminded"
-                },
-                {
-                  "name": "Update Sent",
-                  "value": "Update Sent"
-                },
-                {
-                  "name": "Thank You Sent",
-                  "value": "Thank You Sent"
-                }
-              ],
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Scheduled Date",
-              "displayName": "Scheduled Date",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Stage 2 Sent",
-              "displayName": "Stage 2 Sent",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Last Email Sent",
-              "displayName": "Last Email Sent",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Last Email Sent Date",
-              "displayName": "Last Email Sent Date",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "Draft Created",
-              "displayName": "Draft Created",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": false
-            }
           ]
         },
         "options": {
@@ -1417,7 +582,7 @@
       ],
       "credentials": {
         "airtableTokenApi": {
-          "id": YOUR API KEY ,
+          "id": "YOUR_AIRTABLE_CREDENTIAL_ID",
           "name": "Airtable Personal Access Token account"
         }
       }
@@ -1427,17 +592,13 @@
         "operation": "search",
         "base": {
           "__rl": true,
-          "value": "appsIs8my21UIIkkZ",
-          "mode": "list",
-          "cachedResultName": "Ascend IU Event Outreach",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+          "value": "YOUR_AIRTABLE_BASE_ID",
+          "mode": "list"
         },
         "table": {
           "__rl": true,
-          "value": "tblODUz5fGsKA0DXq",
-          "mode": "list",
-          "cachedResultName": "Alumni",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+          "value": "YOUR_AIRTABLE_TABLE_ID",
+          "mode": "list"
         },
         "filterByFormula": "AND({Status}=\"Approved\", {Stage}=\"Update Sent\", IS_SAME({Scheduled Date}, TODAY(), \"day\"), {Last Email Sent}=\"Update Email\")",
         "options": {}
@@ -1452,7 +613,7 @@
       ],
       "credentials": {
         "airtableTokenApi": {
-          "id": YOUR API KEY ,
+          "id": "YOUR_AIRTABLE_CREDENTIAL_ID",
           "name": "Airtable Personal Access Token account"
         }
       }
@@ -1474,10 +635,10 @@
         416,
         1200
       ],
-      "webhookId": "807333d1-dc99-4ddf-9672-b72fd0c45b09",
+      "webhookId": "YOUR_WEBHOOK_ID_6",
       "credentials": {
         "gmailOAuth2": {
-          "id": "Gaxy9896kOialz5l",
+          "id": "YOUR_GMAIL_CREDENTIAL_ID",
           "name": "Gmail account"
         }
       }
@@ -1487,17 +648,13 @@
         "operation": "update",
         "base": {
           "__rl": true,
-          "value": "appsIs8my21UIIkkZ",
-          "mode": "list",
-          "cachedResultName": "Ascend IU Event Outreach",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+          "value": "YOUR_AIRTABLE_BASE_ID",
+          "mode": "list"
         },
         "table": {
           "__rl": true,
-          "value": "tblODUz5fGsKA0DXq",
-          "mode": "list",
-          "cachedResultName": "Alumni",
-          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+          "value": "YOUR_AIRTABLE_TABLE_ID",
+          "mode": "list"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -1510,157 +667,6 @@
           },
           "matchingColumns": [
             "id"
-          ],
-          "schema": [
-            {
-              "id": "id",
-              "displayName": "id",
-              "required": false,
-              "defaultMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": false
-            },
-            {
-              "id": "Name",
-              "displayName": "Name",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Status",
-              "displayName": "Status",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Pending",
-                  "value": "Pending"
-                },
-                {
-                  "name": "Approved",
-                  "value": "Approved"
-                },
-                {
-                  "name": "Declined",
-                  "value": "Declined"
-                }
-              ],
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Email",
-              "displayName": "Email",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Stage",
-              "displayName": "Stage",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Invited",
-                  "value": "Invited"
-                },
-                {
-                  "name": "Confirmed",
-                  "value": "Confirmed"
-                },
-                {
-                  "name": "Declined",
-                  "value": "Declined"
-                },
-                {
-                  "name": "Reminded",
-                  "value": "Reminded"
-                },
-                {
-                  "name": "Update Sent",
-                  "value": "Update Sent"
-                },
-                {
-                  "name": "Thank You Sent",
-                  "value": "Thank You Sent"
-                }
-              ],
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Scheduled Date",
-              "displayName": "Scheduled Date",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Stage 2 Sent",
-              "displayName": "Stage 2 Sent",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Last Email Sent",
-              "displayName": "Last Email Sent",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Last Email Sent Date",
-              "displayName": "Last Email Sent Date",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "Draft Created",
-              "displayName": "Draft Created",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": false
-            }
           ]
         },
         "options": {
@@ -1677,55 +683,13 @@
       ],
       "credentials": {
         "airtableTokenApi": {
-          "id": YOUR API KEY ,
+          "id": "YOUR_AIRTABLE_CREDENTIAL_ID",
           "name": "Airtable Personal Access Token account"
         }
       }
-    },
-    {
-      "parameters": {
-        "content": "Update Email Phase",
-        "height": 80,
-        "width": 150
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        -96,
-        928
-      ],
-      "id": "aaedac53-8c55-492a-a2a5-b642f17edbbe",
-      "name": "Sticky Note3"
-    },
-    {
-      "parameters": {
-        "content": "Thank you Email Phase\n",
-        "height": 80,
-        "width": 176
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        -80,
-        1216
-      ],
-      "id": "c0ea6fc1-aa1c-4e2b-84a1-204d79c35218",
-      "name": "Sticky Note4"
     }
   ],
-  "pinData": {},
   "connections": {
-    "When clicking ‘Execute workflow’": {
-      "main": [
-        [
-          {
-            "node": "Get Approved Alumni Blast 1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Get Approved Alumni Blast 1": {
       "main": [
         [
@@ -1909,16 +873,14 @@
       ]
     }
   },
-  "active": true,
+  "active": false,
   "settings": {
-    "executionOrder": "v1",
-    "binaryMode": "separate"
+    "executionOrder": "v1"
   },
-  "versionId": "91793e7e-d609-4588-a00c-24f5e90d435c",
+  "versionId": "template-version",
   "meta": {
-    "templateCredsSetupCompleted": true,
-    "instanceId": "a2abc49b3f71d5a19e3dda6c8135d3215da6a2825cea8222b4f69f7bc6d5122e"
+    "instanceId": "template-instance"
   },
-  "id": "gZeoePDpQsvkLKpI",
+  "id": "template-id",
   "tags": []
 }
