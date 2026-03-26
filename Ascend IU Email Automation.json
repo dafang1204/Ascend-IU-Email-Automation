@@ -31,7 +31,7 @@
       "name": "Get Approved Alumni Blast 1",
       "credentials": {
         "airtableTokenApi": {
-          "id": "FsvXVkaQMuKXwQWc",
+          "id": YOUR API KEY,
           "name": "Airtable Personal Access Token account"
         }
       }
@@ -259,7 +259,7 @@
       "name": "Update Airtable After Blast 1 Draft",
       "credentials": {
         "airtableTokenApi": {
-          "id": "FsvXVkaQMuKXwQWc",
+          "id": YOUR API KEY ,
           "name": "Airtable Personal Access Token account"
         }
       }
@@ -313,7 +313,7 @@
       "name": "Watch Form Responses",
       "credentials": {
         "googleSheetsTriggerOAuth2Api": {
-          "id": "jXYGs31AEg8D13dg",
+          "id": YOUR API KEY ,
           "name": "Google Sheets Trigger account"
         }
       }
@@ -348,7 +348,7 @@
       "name": "Check Stage 2 Not Sent",
       "credentials": {
         "airtableTokenApi": {
-          "id": "FsvXVkaQMuKXwQWc",
+          "id": YOUR API KEY ,
           "name": "Airtable Personal Access Token account"
         }
       }
@@ -633,7 +633,7 @@
       "name": "Update Airtable After Path A",
       "credentials": {
         "airtableTokenApi": {
-          "id": "FsvXVkaQMuKXwQWc",
+          "id": YOUR API KEY ,
           "name": "Airtable Personal Access Token account"
         }
       }
@@ -834,7 +834,7 @@
       "name": "Update Airtable After Path B",
       "credentials": {
         "airtableTokenApi": {
-          "id": "FsvXVkaQMuKXwQWc",
+          "id": YOUR API KEY ,
           "name": "Airtable Personal Access Token account"
         }
       }
@@ -888,7 +888,7 @@
       ],
       "credentials": {
         "airtableTokenApi": {
-          "id": "FsvXVkaQMuKXwQWc",
+          "id": YOUR API KEY ,
           "name": "Airtable Personal Access Token account"
         }
       }
@@ -1113,7 +1113,7 @@
       ],
       "credentials": {
         "airtableTokenApi": {
-          "id": "FsvXVkaQMuKXwQWc",
+          "id": YOUR API KEY, 
           "name": "Airtable Personal Access Token account"
         }
       }
@@ -1192,7 +1192,7 @@
       ],
       "credentials": {
         "airtableTokenApi": {
-          "id": "FsvXVkaQMuKXwQWc",
+          "id": YOUR API KEY ,
           "name": "Airtable Personal Access Token account"
         }
       }
@@ -1417,7 +1417,7 @@
       ],
       "credentials": {
         "airtableTokenApi": {
-          "id": "FsvXVkaQMuKXwQWc",
+          "id": YOUR API KEY ,
           "name": "Airtable Personal Access Token account"
         }
       }
@@ -1452,7 +1452,7 @@
       ],
       "credentials": {
         "airtableTokenApi": {
-          "id": "FsvXVkaQMuKXwQWc",
+          "id": YOUR API KEY ,
           "name": "Airtable Personal Access Token account"
         }
       }
@@ -1677,7 +1677,7 @@
       ],
       "credentials": {
         "airtableTokenApi": {
-          "id": "FsvXVkaQMuKXwQWc",
+          "id": YOUR API KEY ,
           "name": "Airtable Personal Access Token account"
         }
       }
