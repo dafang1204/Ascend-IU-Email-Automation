@@ -90,6 +90,7 @@ To replicate this project you will need:
 2. **Airtable** — create a base with the schema above
 3. **Google Cloud** — enable the Gmail API and Google Sheets API, create OAuth credentials
 4. **Google Forms** — create an RSVP form linked to a Google Sheet
+5. **Claude API** - Generates Customized Emails
 
 Configure the following credentials in n8n:
 - Airtable Personal Access Token
