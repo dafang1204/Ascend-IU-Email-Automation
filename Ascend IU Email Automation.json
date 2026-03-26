@@ -1,0 +1,1924 @@
+{
+  "name": "Ascend IU Email Automation",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appsIs8my21UIIkkZ",
+          "mode": "list",
+          "cachedResultName": "Ascend IU Event Outreach",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblODUz5fGsKA0DXq",
+          "mode": "list",
+          "cachedResultName": "Alumni",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+        },
+        "filterByFormula": "=AND({Status}=\"Approved\", NOT({Last Email Sent}))",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        192,
+        48
+      ],
+      "id": "1804cd60-3047-4dc5-9482-69f6831aacca",
+      "name": "Get Approved Alumni Blast 1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "FsvXVkaQMuKXwQWc",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "You are Invited — Ascend IU Upcoming Event",
+        "message": "=Hi {{  $json.Name }},\n\nWe hope this message finds you well! On behalf of Ascend IU, we are thrilled to invite you to our upcoming event.\n\nWe would love to see you there and reconnect with fellow alumni. Please fill out the interest form below to let us know if you'll be able to join us:\n\n[Interest Form Link]\n\nEvent Overview:\n- Date: TBD\n- Location: TBD\n- Details: More information will be shared upon registration\n\nIf you have any questions, feel free to reply to this email. We look forward to hearing from you!\n\nBest,\nAscend IU",
+        "options": {
+          "sendTo": "={{ $json.Email }}"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "6ac3a516-68cf-4a71-b3d1-a7a9106c2e15",
+      "name": "Create Blast 1 Draft",
+      "webhookId": "e872ceac-4dbe-40a8-bc2d-6b647f4ef756",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "Gaxy9896kOialz5l",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "appsIs8my21UIIkkZ",
+          "mode": "list",
+          "cachedResultName": "Ascend IU Event Outreach",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblODUz5fGsKA0DXq",
+          "mode": "list",
+          "cachedResultName": "Alumni",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Stage 2 Sent": false,
+            "Draft Created": true,
+            "id": "={{ $('Get Approved Alumni Blast 1').item.json.id }}",
+            "Stage": "Invited",
+            "Last Email Sent": "Initial Invite",
+            "Last Email Sent Date": "={{ $today.format('yyyy-MM-dd') }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Pending",
+                  "value": "Pending"
+                },
+                {
+                  "name": "Approved",
+                  "value": "Approved"
+                },
+                {
+                  "name": "Declined",
+                  "value": "Declined"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Stage",
+              "displayName": "Stage",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Invited",
+                  "value": "Invited"
+                },
+                {
+                  "name": "Confirmed",
+                  "value": "Confirmed"
+                },
+                {
+                  "name": "Declined",
+                  "value": "Declined"
+                },
+                {
+                  "name": "Reminded",
+                  "value": "Reminded"
+                },
+                {
+                  "name": "Update Sent",
+                  "value": "Update Sent"
+                },
+                {
+                  "name": "Thank You Sent",
+                  "value": "Thank You Sent"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Scheduled Date",
+              "displayName": "Scheduled Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Stage 2 Sent",
+              "displayName": "Stage 2 Sent",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Last Email Sent",
+              "displayName": "Last Email Sent",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Last Email Sent Date",
+              "displayName": "Last Email Sent Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Draft Created",
+              "displayName": "Draft Created",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "typecast": true
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        624,
+        0
+      ],
+      "id": "19ee00c5-ddce-4cb0-b1ef-1627bf93cb21",
+      "name": "Update Airtable After Blast 1 Draft",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "FsvXVkaQMuKXwQWc",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "id": "schedule-trigger-001",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -224,
+        48
+      ]
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyHour"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "1wGruERIEEmaN_BM-uxPGADATbKSnRU4LU_n3luH1YqA",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Form Responses 1",
+          "mode": "name"
+        },
+        "event": "rowAdded",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        -224,
+        352
+      ],
+      "id": "watch-form-responses-p5",
+      "name": "Watch Form Responses",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "jXYGs31AEg8D13dg",
+          "name": "Google Sheets Trigger account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appsIs8my21UIIkkZ",
+          "mode": "list",
+          "cachedResultName": "Ascend IU Event Outreach",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblODUz5fGsKA0DXq",
+          "mode": "list",
+          "cachedResultName": "Alumni",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+        },
+        "filterByFormula": "={{ 'AND({Email}=\"' + $json['Email Address'] + '\", {Stage 2 Sent}=FALSE())' }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        48,
+        352
+      ],
+      "id": "check-stage2-not-sent-p5",
+      "name": "Check Stage 2 Not Sent",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "FsvXVkaQMuKXwQWc",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "attending-check-001",
+              "leftValue": "={{ $('Watch Form Responses').item.json['Will you be attending?'] }}",
+              "rightValue": "Yes",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        320,
+        352
+      ],
+      "id": "yes-or-no-branch-p5",
+      "name": "Yes or No Branch"
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "We are so excited to see you!",
+        "message": "=Hi {{ $('Check Stage 2 Not Sent').item.json.Name }},\n\nThank you so much for confirming your attendance! We are absolutely thrilled to have you join us at the upcoming Ascend IU event.\n\nMore details will be on their way to you shortly. If you have any questions in the meantime, please don't hesitate to reach out.\n\nWe can't wait to see you there!\n\nWarm regards,\nAscend IU",
+        "options": {
+          "sendTo": "={{ $('Check Stage 2 Not Sent').item.json.Email }}"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        560,
+        224
+      ],
+      "id": "create-path-a-draft-p5",
+      "name": "Create Path A Draft",
+      "webhookId": "825f4f62-e5fd-4fac-96ab-79c91278980a",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "Gaxy9896kOialz5l",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "Thank you for letting us know",
+        "message": "=Hi {{ $('Check Stage 2 Not Sent').item.json.Name }},\n\nThank you for letting us know that you won't be able to make it this time. We completely understand and truly appreciate you taking the time to respond.\n\nWe hope to see you at a future Ascend IU event and will keep you in the loop for upcoming opportunities!\n\nBest wishes,\nAscend IU",
+        "options": {
+          "sendTo": "={{ $('Check Stage 2 Not Sent').item.json.Email }}"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        560,
+        464
+      ],
+      "id": "create-path-b-draft-p5",
+      "name": "Create Path B Draft",
+      "webhookId": "b6a20b53-c5c4-474b-b8ac-7f294bdcd59e",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "Gaxy9896kOialz5l",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "appsIs8my21UIIkkZ",
+          "mode": "list",
+          "cachedResultName": "Ascend IU Event Outreach",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblODUz5fGsKA0DXq",
+          "mode": "list",
+          "cachedResultName": "Alumni",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Check Stage 2 Not Sent').item.json.id }}",
+            "Stage 2 Sent": true,
+            "Stage": "Confirmed",
+            "Last Email Sent": "Path A Response",
+            "Last Email Sent Date": "={{ $today.format('yyyy-MM-dd') }}",
+            "Draft Created": true
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Pending",
+                  "value": "Pending"
+                },
+                {
+                  "name": "Approved",
+                  "value": "Approved"
+                },
+                {
+                  "name": "Declined",
+                  "value": "Declined"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Stage",
+              "displayName": "Stage",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Invited",
+                  "value": "Invited"
+                },
+                {
+                  "name": "Confirmed",
+                  "value": "Confirmed"
+                },
+                {
+                  "name": "Declined",
+                  "value": "Declined"
+                },
+                {
+                  "name": "Reminded",
+                  "value": "Reminded"
+                },
+                {
+                  "name": "Update Sent",
+                  "value": "Update Sent"
+                },
+                {
+                  "name": "Thank You Sent",
+                  "value": "Thank You Sent"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Scheduled Date",
+              "displayName": "Scheduled Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Stage 2 Sent",
+              "displayName": "Stage 2 Sent",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Last Email Sent",
+              "displayName": "Last Email Sent",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Last Email Sent Date",
+              "displayName": "Last Email Sent Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Draft Created",
+              "displayName": "Draft Created",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            }
+          ]
+        },
+        "options": {
+          "typecast": true
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        800,
+        224
+      ],
+      "id": "update-path-a-p5",
+      "name": "Update Airtable After Path A",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "FsvXVkaQMuKXwQWc",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "appsIs8my21UIIkkZ",
+          "mode": "list",
+          "cachedResultName": "Ascend IU Event Outreach",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblODUz5fGsKA0DXq",
+          "mode": "list",
+          "cachedResultName": "Alumni",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Check Stage 2 Not Sent').item.json.id }}",
+            "Stage 2 Sent": true,
+            "Stage": "Declined",
+            "Last Email Sent": "Path B Response",
+            "Last Email Sent Date": "={{ $today.format('yyyy-MM-dd') }}",
+            "Draft Created": true
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Pending",
+                  "value": "Pending"
+                },
+                {
+                  "name": "Approved",
+                  "value": "Approved"
+                },
+                {
+                  "name": "Declined",
+                  "value": "Declined"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Stage",
+              "displayName": "Stage",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Invited",
+                  "value": "Invited"
+                },
+                {
+                  "name": "Confirmed",
+                  "value": "Confirmed"
+                },
+                {
+                  "name": "Declined",
+                  "value": "Declined"
+                },
+                {
+                  "name": "Reminded",
+                  "value": "Reminded"
+                },
+                {
+                  "name": "Update Sent",
+                  "value": "Update Sent"
+                },
+                {
+                  "name": "Thank You Sent",
+                  "value": "Thank You Sent"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Scheduled Date",
+              "displayName": "Scheduled Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Stage 2 Sent",
+              "displayName": "Stage 2 Sent",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Last Email Sent",
+              "displayName": "Last Email Sent",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Last Email Sent Date",
+              "displayName": "Last Email Sent Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Draft Created",
+              "displayName": "Draft Created",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            }
+          ]
+        },
+        "options": {
+          "typecast": true
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        800,
+        464
+      ],
+      "id": "update-path-b-p5",
+      "name": "Update Airtable After Path B",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "FsvXVkaQMuKXwQWc",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "id": "daily-no-response-check-p6",
+      "name": "Daily No Response Check",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -224,
+        656
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appsIs8my21UIIkkZ",
+          "mode": "list",
+          "cachedResultName": "Ascend IU Event Outreach",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblODUz5fGsKA0DXq",
+          "mode": "list",
+          "cachedResultName": "Alumni",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+        },
+        "filterByFormula": "AND({Stage}=\"Invited\", {Stage 2 Sent}=FALSE(), DATETIME_DIFF(TODAY(), {Last Email Sent Date}, \"days\") >= 7)",
+        "options": {}
+      },
+      "id": "find-ignored-alumni-p6",
+      "name": "Find Ignored Alumni",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        48,
+        656
+      ],
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "FsvXVkaQMuKXwQWc",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "Just checking in — Ascend IU Event",
+        "message": "=Hi {{ $json.Name }},\n\nWe wanted to follow up on our previous message regarding the upcoming Ascend IU event. We noticed we haven't heard back from you yet and wanted to make sure you didn't miss out!\n\nIf you're interested in attending, please take a moment to fill out the form below:\n\n[Interest Form Link]\n\nWe'd love to have you join us and reconnect with the Ascend IU community. If you have any questions or need more information, feel free to reply to this email.\n\nHope to hear from you soon!\n\nBest,\nAscend IU",
+        "options": {
+          "sendTo": "={{ $json.Email }}"
+        }
+      },
+      "id": "create-path-c-draft-p6",
+      "name": "Create Path C Draft",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        320,
+        656
+      ],
+      "webhookId": "24346a19-8d6c-4c28-9f64-ac195389f2d8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "Gaxy9896kOialz5l",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "appsIs8my21UIIkkZ",
+          "mode": "list",
+          "cachedResultName": "Ascend IU Event Outreach",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblODUz5fGsKA0DXq",
+          "mode": "list",
+          "cachedResultName": "Alumni",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Find Ignored Alumni').item.json.id }}",
+            "Stage": "Reminded",
+            "Last Email Sent": "Follow Up Reminder",
+            "Last Email Sent Date": "={{ $today.format('yyyy-MM-dd') }}",
+            "Draft Created": true
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Pending",
+                  "value": "Pending"
+                },
+                {
+                  "name": "Approved",
+                  "value": "Approved"
+                },
+                {
+                  "name": "Declined",
+                  "value": "Declined"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Stage",
+              "displayName": "Stage",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Invited",
+                  "value": "Invited"
+                },
+                {
+                  "name": "Confirmed",
+                  "value": "Confirmed"
+                },
+                {
+                  "name": "Declined",
+                  "value": "Declined"
+                },
+                {
+                  "name": "Reminded",
+                  "value": "Reminded"
+                },
+                {
+                  "name": "Update Sent",
+                  "value": "Update Sent"
+                },
+                {
+                  "name": "Thank You Sent",
+                  "value": "Thank You Sent"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Scheduled Date",
+              "displayName": "Scheduled Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Stage 2 Sent",
+              "displayName": "Stage 2 Sent",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Last Email Sent",
+              "displayName": "Last Email Sent",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Last Email Sent Date",
+              "displayName": "Last Email Sent Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Draft Created",
+              "displayName": "Draft Created",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            }
+          ]
+        },
+        "options": {
+          "typecast": true
+        }
+      },
+      "id": "update-after-path-c-p6",
+      "name": "Update Airtable After Path C",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        560,
+        656
+      ],
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "FsvXVkaQMuKXwQWc",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "Initial Invite Phase",
+        "height": 80,
+        "width": 160
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -592,
+        64
+      ],
+      "id": "cb6ebf15-bbf4-4651-b95a-7212ccbe08a4",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "Yes & No Response Email",
+        "height": 80,
+        "width": 208
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -640,
+        368
+      ],
+      "id": "f50bd4bb-1efd-475f-a270-ae1c624f10e3",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "No Response Follow-Up Email",
+        "height": 80
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -672,
+        672
+      ],
+      "id": "b2931c1d-bb09-48e7-a2f7-c37e9e60d357",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appsIs8my21UIIkkZ",
+          "mode": "list",
+          "cachedResultName": "Ascend IU Event Outreach",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblODUz5fGsKA0DXq",
+          "mode": "list",
+          "cachedResultName": "Alumni",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+        },
+        "filterByFormula": "AND({Status}=\"Approved\", {Stage}=\"Confirmed\", IS_SAME({Scheduled Date}, TODAY(), \"day\"), {Last Email Sent}=\"Path A Response\")",
+        "options": {}
+      },
+      "id": "get-confirmed-alumni-blast-2",
+      "name": "Get Confirmed Alumni Blast 2",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        192,
+        928
+      ],
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "FsvXVkaQMuKXwQWc",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "Important Update — Ascend IU Event Details",
+        "message": "=Hi {{ $json.Name }},\n\nWe're excited to share the details for our upcoming Ascend IU event!\n\n- Date: [Event Date]\n- Time: [Event Time]\n- Location: [Event Location]\n\nLogistics:\n[Additional logistics details here]\n\nWe look forward to seeing you there!\n\nBest,\nAscend IU",
+        "options": {
+          "sendTo": "={{ $json.Email }}"
+        }
+      },
+      "id": "create-blast-2-draft",
+      "name": "Create Blast 2 Draft",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        416,
+        928
+      ],
+      "webhookId": "0bea3268-4c29-43cd-9d70-396f2d4c7df2",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "Gaxy9896kOialz5l",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "appsIs8my21UIIkkZ",
+          "mode": "list",
+          "cachedResultName": "Ascend IU Event Outreach",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblODUz5fGsKA0DXq",
+          "mode": "list",
+          "cachedResultName": "Alumni",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Get Confirmed Alumni Blast 2').item.json.id }}",
+            "Stage": "Update Sent",
+            "Last Email Sent": "Update Email",
+            "Last Email Sent Date": "={{ $today.format('yyyy-MM-dd') }}",
+            "Draft Created": true
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Pending",
+                  "value": "Pending"
+                },
+                {
+                  "name": "Approved",
+                  "value": "Approved"
+                },
+                {
+                  "name": "Declined",
+                  "value": "Declined"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Stage",
+              "displayName": "Stage",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Invited",
+                  "value": "Invited"
+                },
+                {
+                  "name": "Confirmed",
+                  "value": "Confirmed"
+                },
+                {
+                  "name": "Declined",
+                  "value": "Declined"
+                },
+                {
+                  "name": "Reminded",
+                  "value": "Reminded"
+                },
+                {
+                  "name": "Update Sent",
+                  "value": "Update Sent"
+                },
+                {
+                  "name": "Thank You Sent",
+                  "value": "Thank You Sent"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Scheduled Date",
+              "displayName": "Scheduled Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Stage 2 Sent",
+              "displayName": "Stage 2 Sent",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Last Email Sent",
+              "displayName": "Last Email Sent",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Last Email Sent Date",
+              "displayName": "Last Email Sent Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Draft Created",
+              "displayName": "Draft Created",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            }
+          ]
+        },
+        "options": {
+          "typecast": true
+        }
+      },
+      "id": "update-after-blast-2",
+      "name": "Update Airtable After Blast 2",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        624,
+        928
+      ],
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "FsvXVkaQMuKXwQWc",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appsIs8my21UIIkkZ",
+          "mode": "list",
+          "cachedResultName": "Ascend IU Event Outreach",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblODUz5fGsKA0DXq",
+          "mode": "list",
+          "cachedResultName": "Alumni",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+        },
+        "filterByFormula": "AND({Status}=\"Approved\", {Stage}=\"Update Sent\", IS_SAME({Scheduled Date}, TODAY(), \"day\"), {Last Email Sent}=\"Update Email\")",
+        "options": {}
+      },
+      "id": "get-confirmed-alumni-blast-3",
+      "name": "Get Confirmed Alumni Blast 3",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        192,
+        1200
+      ],
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "FsvXVkaQMuKXwQWc",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "Thank you for joining us — Ascend IU",
+        "message": "=Hi {{ $json.Name }},\n\nThank you so much for joining us at the Ascend IU event! It was wonderful to see you and reconnect with our alumni community.\n\nWe'd love to hear your thoughts! Please take a moment to fill out our feedback form:\n\n[Feedback Google Form Link]\n\nYour input helps us make future events even better.\n\nWith gratitude,\nAscend IU",
+        "options": {
+          "sendTo": "={{ $json.Email }}"
+        }
+      },
+      "id": "create-blast-3-draft",
+      "name": "Create Blast 3 Draft",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        416,
+        1200
+      ],
+      "webhookId": "807333d1-dc99-4ddf-9672-b72fd0c45b09",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "Gaxy9896kOialz5l",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "appsIs8my21UIIkkZ",
+          "mode": "list",
+          "cachedResultName": "Ascend IU Event Outreach",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblODUz5fGsKA0DXq",
+          "mode": "list",
+          "cachedResultName": "Alumni",
+          "cachedResultUrl": "https://airtable.com/appsIs8my21UIIkkZ/tblODUz5fGsKA0DXq"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Get Confirmed Alumni Blast 3').item.json.id }}",
+            "Stage": "Thank You Sent",
+            "Last Email Sent": "Thank You Email",
+            "Last Email Sent Date": "={{ $today.format('yyyy-MM-dd') }}",
+            "Draft Created": true
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Pending",
+                  "value": "Pending"
+                },
+                {
+                  "name": "Approved",
+                  "value": "Approved"
+                },
+                {
+                  "name": "Declined",
+                  "value": "Declined"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Stage",
+              "displayName": "Stage",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Invited",
+                  "value": "Invited"
+                },
+                {
+                  "name": "Confirmed",
+                  "value": "Confirmed"
+                },
+                {
+                  "name": "Declined",
+                  "value": "Declined"
+                },
+                {
+                  "name": "Reminded",
+                  "value": "Reminded"
+                },
+                {
+                  "name": "Update Sent",
+                  "value": "Update Sent"
+                },
+                {
+                  "name": "Thank You Sent",
+                  "value": "Thank You Sent"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Scheduled Date",
+              "displayName": "Scheduled Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Stage 2 Sent",
+              "displayName": "Stage 2 Sent",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Last Email Sent",
+              "displayName": "Last Email Sent",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Last Email Sent Date",
+              "displayName": "Last Email Sent Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Draft Created",
+              "displayName": "Draft Created",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            }
+          ]
+        },
+        "options": {
+          "typecast": true
+        }
+      },
+      "id": "update-after-blast-3",
+      "name": "Update Airtable After Blast 3",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        624,
+        1200
+      ],
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "FsvXVkaQMuKXwQWc",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "Update Email Phase",
+        "height": 80,
+        "width": 150
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -96,
+        928
+      ],
+      "id": "aaedac53-8c55-492a-a2a5-b642f17edbbe",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "Thank you Email Phase\n",
+        "height": 80,
+        "width": 176
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        1216
+      ],
+      "id": "c0ea6fc1-aa1c-4e2b-84a1-204d79c35218",
+      "name": "Sticky Note4"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get Approved Alumni Blast 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Approved Alumni Blast 1": {
+      "main": [
+        [
+          {
+            "node": "Create Blast 1 Draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Blast 1 Draft": {
+      "main": [
+        [
+          {
+            "node": "Update Airtable After Blast 1 Draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get Approved Alumni Blast 1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get Confirmed Alumni Blast 2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get Confirmed Alumni Blast 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Watch Form Responses": {
+      "main": [
+        [
+          {
+            "node": "Check Stage 2 Not Sent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Stage 2 Not Sent": {
+      "main": [
+        [
+          {
+            "node": "Yes or No Branch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Yes or No Branch": {
+      "main": [
+        [
+          {
+            "node": "Create Path A Draft",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create Path B Draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Path A Draft": {
+      "main": [
+        [
+          {
+            "node": "Update Airtable After Path A",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Path B Draft": {
+      "main": [
+        [
+          {
+            "node": "Update Airtable After Path B",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Daily No Response Check": {
+      "main": [
+        [
+          {
+            "node": "Find Ignored Alumni",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Ignored Alumni": {
+      "main": [
+        [
+          {
+            "node": "Create Path C Draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Path C Draft": {
+      "main": [
+        [
+          {
+            "node": "Update Airtable After Path C",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Confirmed Alumni Blast 2": {
+      "main": [
+        [
+          {
+            "node": "Create Blast 2 Draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Blast 2 Draft": {
+      "main": [
+        [
+          {
+            "node": "Update Airtable After Blast 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Confirmed Alumni Blast 3": {
+      "main": [
+        [
+          {
+            "node": "Create Blast 3 Draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Blast 3 Draft": {
+      "main": [
+        [
+          {
+            "node": "Update Airtable After Blast 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "91793e7e-d609-4588-a00c-24f5e90d435c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "a2abc49b3f71d5a19e3dda6c8135d3215da6a2825cea8222b4f69f7bc6d5122e"
+  },
+  "id": "gZeoePDpQsvkLKpI",
+  "tags": []
+}
