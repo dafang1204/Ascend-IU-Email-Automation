@@ -98,10 +98,3 @@ Configure the following credentials in n8n:
 
 Update the workflow nodes with your own Airtable Base ID, Table ID, Google Sheet ID, and Gmail address.
 
----
-
-## Resume Bullet Points
-
-- **Engineered** an automated alumni event outreach pipeline for Ascend IU, eliminating manual email tracking by orchestrating a 5-stage communication lifecycle from initial invite to thank-you across all attendees
-- **Architected** a state machine in Airtable tracking each contact through defined stages, with filterByFormula queries ensuring each workflow branch only processed records in the correct state
-- **Implemented** event-driven and scheduled n8n triggers for form response routing, 7-day inactivity detection, and date-matched email blasts, with a draft-first Gmail pattern for human review
