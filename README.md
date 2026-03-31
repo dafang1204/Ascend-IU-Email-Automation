@@ -11,7 +11,7 @@ A fully automated alumni event outreach pipeline built for Ascend IU, eliminatin
 - **Gmail API** — Creates email drafts at each stage for human review
 - **Google Sheets API** — Stores form responses, polled by n8n for new submissions
 - **Google Forms** — RSVP form alumni fill out
-- **Claude API** - Generates Personlized Emails 
+- **Claude API** - Generates Personalized Emails 
 
 ---
 
